@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>ERROR</title>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans:400,400italic,300italic,300|Raleway:300,400,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="../static/CSS/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../static/CSS/style.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#error").fadeOut();
+		$("#error").fadeIn();
+		$("#status").fadeOut();
+		$("#status").fadeIn();
+		$("#failIcn").fadeOut();
+		$("#failIcn").fadeIn();
+		$("#restartBtn").fadeOut();
+		$("#restartBtn").fadeIn();		
+	});
+	
+</script>
+</head>
+<body>
+<div class="content">
+<div class="container">
+	<div class="row">
+		<div class="logo">
+            <img src="../static/IMG/logo.png" alt="logo" width="150">
+            <h1>File Sorter</h1>
+    	</div>    
+		<br><br><br><br>
+		<h1 align="center" id="error">{{ err }}</h1>
+		<center><img id="failIcn" src="../static/IMG/fail.png" width="50"><br><br>
+		<h1 id="reason">{{reason}}</h1>
+		<a href="http://localhost:69/"><button id="restartBtn" class="btn">Restart</button></a></center>
+	</div>
+</div>
+</div>
+</body>
+</html>

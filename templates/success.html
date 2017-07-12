@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>SUCCESS</title>
+<link href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans:400,400italic,300italic,300|Raleway:300,400,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="../static/CSS/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../static/CSS/style.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+          $("#successIcn").fadeOut();
+          $("#successIcn").fadeIn();
+          $("#statusTitle").fadeOut();
+          $("#statusTitle").fadeIn();
+          $("#locationTitle").fadeOut();
+          $("#locationTitle").fadeIn();
+          $("#locationBtn").fadeOut();
+          $("#locationBtn").fadeIn();
+          $("#restartBtn").fadeOut();
+          $("#restartBtn").fadeIn();		
+	});
+	
+</script>
+</head>
+<body>
+<div class="content">
+<div class="container">
+	<div class="row">
+		<div class="logo">
+            <img src="../static/IMG/logo.png" alt="logo" width="150">
+            <h1><strong>File Sorter</strong></h1>
+    	</div>    
+		<br><br><br><br>
+		  <center><h1 id="succTitle"><strong>Success! The files have been sorted into the materials/ folder.</strong></h1>
+          <br><img id='successIcn' src='../static/IMG/success.png' width='50'><br><br>
+          <br><br>
+          <a href="http://localhost:69/"><button id="restartBtn" class="btn"><strong>Restart</strong></button></a></center>
+	</div>
+</div>
+</div>
+</body>
+</html>
