@@ -15,7 +15,13 @@ app = Flask(__name__)
 ALLOWED_EXTENSIONS = set(['ipt', 'xlsx'])
 app.config['ALLOWED_EXTENSIONS'] = ALLOWED_EXTENSIONS
 
+
+if not os.path.exists("static/file_queue/"): 
+                os.mkdir("static/file_queue/")
+
 app.config['UPLOAD_FOLDER'] = 'static/file_queue/'
+
+
 
 
 def allowed_file(filename):
@@ -45,7 +51,8 @@ def sortedPage():
         filenames = []
         for file in uploaded_files:
             if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
+                filename = file.filename
+                #filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 filenames.append(filename)
         return redirect(url_for('doTasks'))
