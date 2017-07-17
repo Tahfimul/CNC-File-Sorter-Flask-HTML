@@ -2,29 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="shortcut icon" type="image/x-icon" href="../static/IMG/favicon.ico"/>
-  <title>Ibex Innovation - File Sorter</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../static/IMG/favicon.ico"/>
+    <title>Ibex Innovation - File Sorter</title>
     <link href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans:400,400italic,300italic,300|Raleway:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/CSS/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../static/CSS/style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../static/JS/loadingBar.js"></script>
 		<script>
-
-            $(document).ajaxSuccess(function(event, request, settings) {
-                if (request.getResponseHeader('REQUIRES_AUTH') === '1') {
-                   window.location = '/finished';
-                }
-            });
-
-
-
-
-
-
-
-
-            $(document).ready(function(){
+        $(document).ajaxSuccess(function(event, request, settings) {
+          if (request.getResponseHeader('REQUIRES_AUTH') === '1') {
+              window.location = '/finished';
+          }
+        });
+        $(document).ready(function(){
         $("#startBtn").fadeOut();
         $("#progressBar").fadeOut();
         $("#cancelBtn").fadeOut();
@@ -38,65 +30,48 @@
           $("#fileidsubmit").click();
           $("#cancelBtn").fadeIn();
           $("#progressBar").fadeIn();
+          $("#progressBar").hover(function() {
+            $( this ).fadeOut( 100 );
+            $( this ).fadeIn( 500 );
+          });
           $("#cancelBtn").click(function(){
-          var confirmation = confirm("Are you sure?");
-          if (confirmation == true){
-            var progress = "fail";
-          }
+            var confirmation = confirm("Are you sure?");
+            if (confirmation == true){
+              var progress = "fail";
+            }
           });         
         });        
       });
     </script> 
-
-
-
 </head>
-
 <body>
-
 <div class="content">
-      <div class="container wow fadeInUp delay-03s">
-        <div class="row">
+      <div class="container wow fadeInUp delay-03s">        
           <div class="logo">
             <img src="../static/IMG/logo.png" alt="logo" width="150">
             <h1><strong>File Sorter</strong></h1>
           </div>
-
           <div align="center">
           <button id="selectBtn" class="btn">Select Folder</button>
           <button id="startBtn" class="btn">Start</button>	
           </div><br>
-
-            <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="0"
-            aria-valuemin="0" aria-valuemax="100" style="width:0%">
+          <div id="progressBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0"
+            aria-valuemin="0" aria-valuemax="100" style="width:0px; font-family: 'Audiowide', cursive; font-size: 40px; height: 30px; border-radius: 15px;">
               0%
-            </div>
-
-
-
-          
-          <div class="row" align="center" style="display: none;">
-    		
-          	      <form action = "http://localhost:69/finished" method="POST" enctype="multipart/form-data">
+          </div><br><br><br>
+          <button id="cancelBtn" class="btn" style="font-size: 10px; width: 60px;"><img src="../static/IMG/cancel.png" width="20px"></button>                   
+          <div class="row" align="center" style="display: none;">    		
+          	<form action = "http://localhost:69/finished" method="POST" enctype="multipart/form-data">
 			         <input id='fileid' type="file" name="file[]" multiple />
 			         <input id='fileidsubmit' type="submit"/>
-					 <ul id="fileOutput"></ul>
+					     <ul id="fileOutput"></ul>
 			      </form>
-  		  
-
   		    </div>
-
-
-
-        </div>
-                  <button id="cancelBtn" class="btn">Cancel</button>
-
-        
+          <div align="right">
+            <button class="btn"><a href="https://github.com/Tahfimul/CNC-File-Sorter-Flask-HTML" target="about_blank">Help ?</a></button>
+          </div>                      
       </div>
 </div>
-
-
-
 </body>
 </html>
 
