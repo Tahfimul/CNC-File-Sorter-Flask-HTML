@@ -1,58 +1,48 @@
 from openpyxl import load_workbook
 from flask import Flask, request, redirect, url_for, render_template
-from werkzeug.utils import secure_filename
 from shutil import copyfile
 import os 
-import time
-'''
-TODO: Excel row adj, cancel button cancel, delete all things in target dir before restarting
-'''
+import webbrowser
 
+url = 'http://localhost:69/'
 
-app = Flask(__name__) 
-
+app = Flask(__name__)
+webbrowser.open(url) 
 
 ALLOWED_EXTENSIONS = set(['ipt', 'xlsx'])
 app.config['ALLOWED_EXTENSIONS'] = ALLOWED_EXTENSIONS
 
+file_queue = 'D:/Ibex Innovation/File Sorter/file_queue/'
+materials =  'D:/Ibex Innovation/File Sorter/materials/'
 
-if not os.path.exists("static/file_queue/"): 
-                os.mkdir("static/file_queue/")
+if not os.path.exists(file_queue): 
+                os.makedirs(file_queue)
 
-app.config['UPLOAD_FOLDER'] = 'static/file_queue/'
-
-
-
+app.config['UPLOAD_FOLDER'] = file_queue
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
-
 @app.route('/', methods = ['GET', 'POST'])
 def home():
-    folder = 'static/file_queue/'
-    folder2 = 'material/'
-    for the_file in os.listdir(folder):
-        file_path = os.path.join(folder, the_file)
+    for the_file in os.listdir(file_queue): 
+        file_path = os.path.join(file_queue, the_file)
         try:
             if os.path.isfile(file_path):
                 os.unlink(file_path)
-            #elif os.path.isdir(file_path): shutil.rmtree(file_path)
         except Exception as e:
             print(e)
-    for the_file in os.listdir(folder2):
-        file_path = os.path.join(folder2, the_file)
-        try:
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
-            #elif os.path.isdir(file_path): shutil.rmtree(file_path)
-        except Exception as e:
-            print(e)
+    if not os.path.exists(materials): 
+                os.mkdir(materials)
+    for the_file in os.listdir(materials):
+         file_path = os.path.join(materials, the_file)
+         try:
+             if os.path.isfile(file_path):
+                 os.unlink(file_path)
+         except Exception as e:
+             print(e)
     return render_template('index.html')
-
-
-
 
 @app.route('/finished', methods = ['GET', 'POST'])
 def sortedPage():
@@ -62,18 +52,16 @@ def sortedPage():
         for file in uploaded_files:
             if file and allowed_file(file.filename):
                 filename = file.filename
-                #filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 filenames.append(filename)
         return redirect(url_for('doTasks'))
-
 
 @app.route('/task')
 def doTasks():
     xlFileCount = 0
     iptFileCount = 0
 
-    files = os.listdir('static/file_queue/')
+    files = os.listdir(file_queue)
     for i in files:
         if ".xlsx" in i:
             xlFile = i
@@ -86,15 +74,18 @@ def doTasks():
         return render_template('error.html', err="Status: No .ipt files have been uploaded! Please restart.")
     
     elif(xlFileCount > 1 or xlFileCount == 0):
-        return render_template('error.html', err="Multiple or none excel files uploaded! Please restart.")
+        return render_template('error.html', err="Status: Multiple or none .xlsx files were uploaded! Please restart.")
+
+    if(iptFileCount == 0 & xlFileCount == 0):
+        return render_template('error.html', err="Status: No .ipt or .xlsx files were uploaded! Please restart.")
+
     else:
         readxl(xlFile)
         return render_template('success.html')
-
+        exit()
 
 def readxl(excelFileName):
-    wb = load_workbook(filename='static/file_queue/' + excelFileName)#, read_only=True)
-    #Change according to sheet name
+    wb = load_workbook(filename=file_queue + excelFileName)
     ws = wb['Sheet1']
     for row in ws.rows:
         myrow = [] 
@@ -103,24 +94,21 @@ def readxl(excelFileName):
         if (myrow[5] == "Yes"):
             part_num = myrow[2]
             material = myrow[3]
-            #print("Part: " + part_num + " Material: " + material)
-            dst = "material/" + material + "/" + part_num + ".ipt"
-            if not os.path.exists("material/"): 
-                os.mkdir("material/")
-            src = "static/file_queue/" + part_num + ".ipt"
-            if not os.path.exists("material/"+ material): 
-                os.mkdir("material/"+material)
+            dst = materials + material + "/" + part_num + ".ipt"
+            if not os.path.exists(materials): 
+                os.mkdir(materials)
+            src = file_queue + part_num + ".ipt"
+            if not os.path.exists(materials + material): 
+                os.mkdir(materials+material)
             copyfile(src, dst)
-    #Find a way to close the file and be able to delete the excel file from the saved location (file_queue)
-    #wb.close_workbook()
+
+@app.route('/close', methods = ['GET', 'POST'])
+def exit():
+    os._exit(0)
+
     
-    
-
-
-
-
-
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=69, debug=True)
-    #readxl("blueprint.xlsx")
+    app.run(host='0.0.0.0', port=69, debug=False)
+
+    
+    
