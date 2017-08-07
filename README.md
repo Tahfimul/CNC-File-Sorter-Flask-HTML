@@ -54,4 +54,5 @@ A file sorter that is capable of checking for CNC files from an excel spreadshee
 
 <p><strong>#7.</strong> Now you can locate the <code>main.py</code> script and hit enter to run the program.</p> 
 
-
+<h2>This is the gist of how the program functions</h2>
+<img src="https://user-images.githubusercontent.com/19698804/29047011-e2327f7e-7b97-11e7-876b-b86ddaf7f185.jpg"/>
