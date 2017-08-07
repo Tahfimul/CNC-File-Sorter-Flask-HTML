@@ -56,3 +56,10 @@ A file sorter that is capable of checking for CNC files from an excel spreadshee
 
 <h2>This is the gist of how the program functions</h2>
 <img src="https://user-images.githubusercontent.com/19698804/29047011-e2327f7e-7b97-11e7-876b-b86ddaf7f185.jpg"/>
+
+<h2>To use it:</h2>
+<p><strong>#1.</strong> Launch program by running the Python(main.py) script</p>
+<p><strong>#2.</strong> When the program launches, click the <code>Select files</code> button and on the pop up window, go to the folder with the .ipt files and .xlsx file. Make sure that all the .ipt files that you want sorted are contained in one folder and that they are not nested inside other folders inside the folder. Also make sure to generate the Excel spread sheet in .xlsx file format using AutoDesk Inventor and storing the .xlsx file inside the same folder with the .ipt files. Then, click <code>Select Files</code> button in the window.</p>
+<p><strong>#2a.</strong> You can also click the <code>Exit</code> button to exit the program.</p>
+<p><strong>#3.</strong> Click <code>Start</code> button. You should see a progress bar that shows the percentage of the processing done and a <code>X</code> button which can be clicked to cancel the processing.</p>
+<p><strong>#4.</strong> Once the processing is done, you will be redirected to either the error or success page.</p>
