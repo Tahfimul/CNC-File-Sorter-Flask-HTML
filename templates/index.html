@@ -17,16 +17,26 @@
           }
         });
         $(document).ready(function(){
-        $("#startBtn").fadeOut();
-        $("#progressBar").fadeOut();
-        $("#cancelBtn").fadeOut();
-        $("#selectBtn").click(function(){
+          $("#cancelMessage").fadeOut();
+          $("#startBtn").fadeOut();
+          $("#progressBar").fadeOut();
+          $("#cancelBtn").fadeOut();          
+          $("#exitBtn").fadeIn();
+          $("#exitBtn").click(function(){
+            confirm("Are you sure?");
+            if (true) { 
+              alert("Close this tab.");             
+              window.location = '/close';
+            }
+          })
+          $("#selectBtn").click(function(){
           $("#selectBtn").fadeOut();
           $("#fileid").click();
-          $("#startBtn").fadeIn();
-        });
-        $("#startBtn").click(function(){
+          $("#startBtn").fadeIn();          
+          });
+          $("#startBtn").click(function(){
           $("#startBtn").fadeOut();
+          $("#exitBtn").fadeOut();
           $("#fileidsubmit").click();
           $("#cancelBtn").fadeIn();
           $("#progressBar").fadeIn();
@@ -35,10 +45,13 @@
             $( this ).fadeIn( 500 );
           });
           $("#cancelBtn").click(function(){
-            var confirmation = confirm("Are you sure?");
-            if (confirmation == true){
-              window.location.href= '/';
-            }
+            confirm("Are you sure?");
+            if (true) {
+              $("#cancelMessage").fadeIn();
+              $("#cancelBtn").fadeOut();
+              $("#progressBar").fadeOut();
+              window.location = '/';
+            }   
           });         
         });        
       });
@@ -46,12 +59,13 @@
 </head>
 <body>
 <div class="content">
-      <div class="container wow fadeInUp delay-03s">        
+      <div class="container">        
           <div class="logo">
             <img src="../static/IMG/logo.png" alt="logo" width="150">
             <h1><strong>File Sorter</strong></h1>
           </div>
           <div align="center">
+          <h1 id="cancelMessage"><strong>Cancellation under progress. Please wait to be redirected.</h1>
           <button id="selectBtn" class="btn">Select Folder</button>
           <button id="startBtn" class="btn">Start</button>	
           </div><br>
@@ -67,9 +81,7 @@
 					     <ul id="fileOutput"></ul>
 			      </form>
   		    </div>
-          <div align="right">
-            <button class="btn"><a href="https://github.com/Tahfimul/CNC-File-Sorter-Flask-HTML" target="about_blank">Help ?</a></button>
-          </div>                      
+          <button id="exitBtn" class="btn">Exit</button>                     
       </div>
 </div>
 </body>
