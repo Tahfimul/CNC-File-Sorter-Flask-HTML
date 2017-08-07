@@ -28,4 +28,4 @@ A file sorter that is capable of checking for CNC files from an excel spreadshee
 &nbsp;&nbsp;&nbsp;A. Using the windows search, type <code>"edit env"</code> and hit enter.<br>
 &nbsp;&nbsp;&nbsp;B. When the window opens up, click <code>Environment Variables</code><br>
 &nbsp;&nbsp;&nbsp;C. When the next window opens up, under <code>"System Variables"</code>, look under the <code>Variable</code> column for <code>Path</code>and select it. Under the <code>"System Variables"</code> box, there are buttons, look for and select <code>"Edit"</code>.</br>
-&nbsp;&nbsp;&nbsp;D. Select</p>
+&nbsp;&nbsp;&nbsp;D. In the next window that pops up, look for the <code>New</code> button. In the blank, add the location of the pip script. To find the location of the pip script:<br> a. Go to the location where you installed python. <br> b. Inside the folder look for folder named <code>Script</code> and hit enter</p>
