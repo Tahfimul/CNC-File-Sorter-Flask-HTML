@@ -45,7 +45,7 @@ A file sorter that is capable of checking for CNC files from an excel spreadshee
 <p><strong>#5.</strong> Extract the downloaded .zip file into a drive other than the main <code>C:</code> drive. This is because windows has a high level &nbsp;&nbsp;&nbsp;&nbsp;security in place which does not permit the program to create folders and store files in them.</p>
 
 <p><strong>#6.</strong> Open the Pyhton <code>main.py</code> script using a text editor or IDLE. Then:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;a. Edit the variable named <code>file_queue</code> value so that the drive letter of the location of the value matches the drive letter &nbsp;&nbsp;&nbsp;&nbsp;where you extracted the .zip file on. <br>&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;a. Edit the variable named <code>file_queue</code> value so that the drive letter of the location of the value matches the drive letter &nbsp;&nbsp;&nbsp;&nbsp;where you extracted the .zip file on.<br>
 
 <p><strong>#6a.</strong> Edit the success.html so that the location of the materials folder is the same as your edited value in the materials variable. To do this: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;A. Locate the success.html page by going to where you installed the file sorter. Then:<br>
