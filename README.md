@@ -19,7 +19,7 @@ A file sorter that is capable of checking for CNC files from an excel spreadshee
   <li>JQuery</li>
   <li>Ajax</li>
   <li>Openpyxl</li>
-</ul>
+</ul
 
 <h2>To setup:</h2>
 
@@ -45,12 +45,22 @@ A file sorter that is capable of checking for CNC files from an excel spreadshee
 <p><strong>#5.</strong> Extract the downloaded .zip file into a drive other than the main <code>C:</code> drive. This is because windows has a high level &nbsp;&nbsp;&nbsp;&nbsp;security in place which does not permit the program to create folders and store files in them.</p>
 
 <p><strong>#6.</strong> Open the Pyhton <code>main.py</code> script using a text editor or IDLE. Then:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;a. Edit the variable named <code>file_queue</code> value so that the drive letter of the location of the value matches the drive letter &nbsp;&nbsp;&nbsp;&nbsp;where you extracted the .zip file on. <br>&nbsp;&nbsp;&nbsp;&nbsp;For example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a. Edit the variable named <code>file_queue</code> value so that the drive letter of the location of the value matches the drive letter &nbsp;&nbsp;&nbsp;&nbsp;where you extracted the .zip file on. <br>&nbsp;&nbsp;&nbsp;&nbsp;
+
+<p><strong>#6a.</strong> Edit the success.html so that the location of the materials folder is the same as your edited value in the materials variable. To do this: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;A. Locate the success.html page by going to where you installed the file sorter. Then:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Entering the file sorter folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Enter the templates folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Find the success.html file and open it using a text editor. Then:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. Look for something similar to <code><button id="locationBtn" class="btn">D:/File Sorter/static/materials</button></code> and edit it to match the value of the materials &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable in the main.py file that you edited earlier.<br>
+For example:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;This is the original code:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<code>file_queue = 'D:/File Sorter/file_queue/'</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>materials = 'D:/File Sorter/static/materials'</code>(main.py)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code><button id="locationBtn" class="btn">D:/File Sorter/static/materials</button></code>(success.html)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;If you extracted the .zip file on <code>F:</code> drive, your changes should look like this:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<code>file_queue = 'F:/File Sorter/file_queue/'</code><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Do the same for materials variable.</p>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>file_queue = 'F:/File Sorter/static/materials'</code>(main.py)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code><button id="locationBtn" class="btn">F:/File Sorter/static/materials</button></code>(success.html)
+
 
 <p><strong>#7.</strong> Now you can locate the <code>main.py</code> script and hit enter to run the program. A window will pop up that will ask you which program to open the file using. Find where it says <code>more application</code> and click it. Then find <code>look for another app on this PC</code> and click it. On the window that opens up, go to the location where Python is installed and find <code>Python.exe</code> inside the folder and select it. Then hit <code>Open</code> at the bottom of the window. Now the program should run.</p> 
 
